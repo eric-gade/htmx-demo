@@ -1,0 +1,24 @@
+<li class="todo-item"
+    hx-trigger="change"
+    hx-post="/todo/<%= id %>"
+    hx-include="#item-<%= id %> input.todo-input"
+    hx-swap="outerHTML"
+    id="item-<%= id %>">
+    <div class="usa-checkbox">
+        <% if(isChecked){ %>
+        <input id="checkbox-<%= id %>" name="checkbox" class="todo-input usa-checkbox__input" type="checkbox" checked="true">
+        <% } else { %>
+        <input id="checkbox-<%= id %>" name="checkbox" class="todo-input usa-checkbox__input" type="checkbox">
+        <% } %>
+        <label class="usa-checkbox__label" for="checkbox-<%= id %>">
+            <br />
+        </label>
+        <input name="text" class="todo-input usa-input" type="text" value="<%= text %>">
+        <button
+            hx-delete="/todo/<%= id %>"
+            hx-target="#item-<%= id %>"
+            hx-swap="outerHTML">
+            ✕
+        </button>
+    </div>
+</li>
